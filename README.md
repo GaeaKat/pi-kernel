@@ -30,7 +30,7 @@ This project aims to create a simple, yet functional operating system for the Ra
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/GaeaKat/pi-os.git
+    git clone https://github.com/GaeaKat/pi-kernel.git
     cd pi-os
     ```
 2. Set up the cross-compiler:
@@ -47,6 +47,7 @@ This project aims to create a simple, yet functional operating system for the Ra
     ```
 
 5. Write the OS image to the SD card:
+    ```
     cp build/kernel8.img /path/to/mounted/sdcard/kernel8.img
     sync
     ```
