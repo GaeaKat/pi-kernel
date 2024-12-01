@@ -33,7 +33,12 @@ void init_uart(void)
 void uart_handler(void) {
     uint32_t status = in_word(UART0_MIS);
     if (status & (1 << 4)) {
-        write_char(read_char());
+        char ch = read_char();
+        if (ch == '\r') {
+            write_string("\r\n");
+        } else {
+            write_char(ch);
+        }
 
         out_word(UART0_ICR, (1 << 4));
     }
