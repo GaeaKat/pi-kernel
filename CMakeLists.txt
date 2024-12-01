@@ -9,6 +9,8 @@ set(SOURCES
     src/uart.c
     src/print.c
     src/debug.c
+    src/handler.s
+    src/handler.c
 )
 include_directories(include/)
 # Add executable
