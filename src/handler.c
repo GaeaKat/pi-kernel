@@ -26,12 +26,12 @@ void init_interrupt_controller(void) {
     out_word(ENABLE_IRQS_2, (1 << 25));
 }
 
-static void timer_interupt_handler(void) {
+static void timer_interupt_handler(uint64_t spsr) {
     uint32_t status = read_timer_status();
     if (status & (1 << 2)) {
         ticks++;
         if (ticks % 100 == 0) {
-            printk("Timer interrupt %d\r\n", ticks);
+            printk("Timer interrupt %d %x\r\n", ticks, spsr);
         }
         set_timer_interval(timer_interval);
     }
@@ -53,7 +53,7 @@ void handler(uint64_t numid, uint64_t esr, uint64_t elr)
         case 2:
             irq=in_word(CNTP_STATUS_EL0);
             if ( irq & (1 << 1)) {
-                timer_interupt_handler();
+                timer_interupt_handler(esr);
             } else {
                 irq = get_irq_number();
                 if( irq & (1 << 19)) {

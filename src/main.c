@@ -9,10 +9,10 @@ void KMain(void)
     init_uart();
     printk("Hello, qemu world!\n");
     printk("We are at EL: %u\n", get_el());
-    //init_timer();
+    init_timer();
     init_interrupt_controller();
-    enable_irq();
-    while (1) {
-        ;
-    }
+    //enable_irq();
+    // while (1) {
+    //     ;
+    // }
 }

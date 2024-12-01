@@ -41,11 +41,11 @@ current_el_spn_serror:
 
 .balign 0x80
 lower_el_aarch64_sync:
-    b error
+    b sync_handler
 
 .balign 0x80
 lower_el_aarch64_irq:
-    b error
+    b irq_handler
 
 .balign 0x80
 lower_el_aarch64_fiq:
@@ -91,7 +91,7 @@ sync_handler:
     stp x28, x29, [sp, #(16 * 14)]
     str x30, [sp, #(16 * 15)]
     mov x0, #1
-    mrs x1, esr_el1
+    mrs x1, spsr_el1 //esr_el1
     mrs x2, elr_el1
     bl handler
     ldp x0, x1, [sp]
@@ -132,7 +132,7 @@ irq_handler:
     stp x28, x29, [sp, #(16 * 14)]
     str x30, [sp, #(16 * 15)]
     mov x0, #2
-    mrs x1, esr_el1
+    mrs x1, spsr_el1 //esr_el1
     mrs x2, elr_el1
     bl handler
     ldp x0, x1, [sp]

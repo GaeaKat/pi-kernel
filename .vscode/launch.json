@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Kernel with QEMU",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/kernel8.img",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/opt/homebrew/bin/aarch64-unknown-linux-gnu-gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "",
+            "postDebugTask": "",
+            "targetArchitecture": "arm64",
+            "debugServerPath": "/opt/homebrew/bin/qemu-system-aarch64",
+            "debugServerArgs": "-M raspi3b -serial stdio -kernel ${workspaceFolder}/build/kernel8.img",
+            "serverStarted": "",
+            "filterStdout": true,
+            "filterStderr": false,
+            "serverLaunchTimeout": 10000,
+            "internalConsoleOptions": "openOnSessionStart",
+            "logging": {
+                "moduleLoad": false,
+                "programOutput": true,
+                "trace": false,
+                "engineLogging": false,
+                "exceptions": false
+            }
+        }
+    ]
+}
