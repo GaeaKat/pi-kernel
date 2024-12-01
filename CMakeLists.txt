@@ -11,6 +11,7 @@ set(SOURCES
     src/debug.c
     src/handler.s
     src/handler.c
+    src/mmu.s
 )
 include_directories(include/)
 # Add executable

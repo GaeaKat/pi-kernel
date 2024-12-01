@@ -1,11 +1,10 @@
 #ifndef _UART_H
 #define _UART_H
 
-#ifndef PI_4
-#define IO_BASE_ADDR 0x3F200000
-#else
-#define IO_BASE_ADDR 0xFE200000
-#endif
+#include "memory.h"
+
+#define IO_BASE_ADDR    P2V(0x3f200000)
+
 #define UART0_DR        IO_BASE_ADDR + 0x1000
 #define UART0_FR        IO_BASE_ADDR + 0x1018
 #define UART0_CR        IO_BASE_ADDR + 0x1030
@@ -22,4 +21,4 @@ void write_string(const char *string);
 void init_uart(void);
 void uart_handler(void);
 
-#endif // _UART_H
+#endif

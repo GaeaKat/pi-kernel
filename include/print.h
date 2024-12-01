@@ -5,4 +5,4 @@
 
 int printk(const char *format, ...);
 
-#endif // _PRINT_H
+#endif

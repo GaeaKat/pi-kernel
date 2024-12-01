@@ -2,9 +2,9 @@
 .global out_word
 .global in_word
 .global memset
-.global memcmp
-.global memmove
 .global memcpy
+.global memmove
+.global memcmp
 .global get_el
 
 get_el:
@@ -41,19 +41,20 @@ memcmp:
     mov x3, x0
     mov x0, #0
 
-compare: 
+compare:
     cmp x2, #0
     beq memcmp_end
 
     ldrb w4, [x3], #1
     ldrb w5, [x1], #1
     sub x2, x2, #1
-    cmp w4,w5
+    cmp w4, w5
     beq compare
+
     mov x0, #1
 
 memcmp_end:
-    ret 
+    ret
 
 memmove:
 memcpy:
@@ -61,7 +62,7 @@ memcpy:
     beq memcpy_end
 
     mov x4, #1
-    
+
     cmp x1, x0
     bhs copy
     add x3, x1, x2
@@ -80,8 +81,9 @@ copy:
     add x0, x0, x4
     add x1, x1, x4
 
-    subs x2,x2, #1
+    subs x2, x2, #1
     bne copy
 
 memcpy_end:
     ret
+    
